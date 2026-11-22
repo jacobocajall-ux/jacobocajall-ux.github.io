@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jacobo Cajal · Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Jacobo Cajal, estudiante de Desarrollo de Software en San Miguel de Tucumán. Proyectos web, Python y redes."
+    />
+    <style>
+      :root {
+        --bg: #0f1115;
+        --surface: #171a21;
+        --line: #262b35;
+        --text: #e8eaf0;
+        --muted: #9aa3b2;
+        --accent: #5eead4;
+        --accent-2: #38bdf8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        background: rgba(15, 17, 21, 0.85);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+        z-index: 10;
+      }
+      nav .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--text);
+      }
+      .logo span {
+        color: var(--accent);
+      }
+      nav ul {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+      nav ul a {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      nav ul a:hover {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      header.hero {
+        padding: 96px 0 72px;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: var(--accent);
+        border: 1px solid var(--line);
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        line-height: 1.15;
+        margin-bottom: 18px;
+      }
+      h1 em {
+        font-style: normal;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .lead {
+        color: var(--muted);
+        font-size: 1.15rem;
+        max-width: 620px;
+        margin-bottom: 32px;
+      }
+      .btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 12px 22px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #06201c;
+      }
+      .btn-ghost {
+        border: 1px solid var(--line);
+        color: var(--text);
+      }
+      .btn:hover {
+        text-decoration: none;
+        opacity: 0.9;
+      }
+
+      section {
+        padding: 72px 0;
+        border-top: 1px solid var(--line);
+      }
+      h2 {
+        font-size: 1.7rem;
+        margin-bottom: 8px;
+      }
+      .sub {
+        color: var(--muted);
+        margin-bottom: 36px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .icon {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+
+      .project {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .status {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 999px;
+        width: fit-content;
+      }
+      .s-dev {
+        background: rgba(56, 189, 248, 0.12);
+        color: var(--accent-2);
+      }
+      .s-done {
+        background: rgba(94, 234, 212, 0.12);
+        color: var(--accent);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: auto;
+        padding-top: 8px;
+      }
+      .chip {
+        font-size: 0.75rem;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        padding: 2px 10px;
+        border-radius: 6px;
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .stack .chip {
+        font-size: 0.9rem;
+        padding: 6px 14px;
+        color: var(--text);
+      }
+
+      .contact {
+        text-align: center;
+      }
+      .contact .lead {
+        margin: 0 auto 28px;
+      }
+      footer {
+        padding: 32px 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-align: center;
+        border-top: 1px solid var(--line);
+      }
+
+      @media (max-width: 600px) {
+        nav ul {
+          gap: 14px;
+        }
+        nav ul li:nth-child(3) {
+          display: none;
+        }
+        header.hero {
+          padding: 64px 0 48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrap">
+        <a href="#" class="logo">jacobo<span>.dev</span></a>
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#stack">Tecnologías</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <span class="tag">📍 San Miguel de Tucumán, Argentina</span>
+        <h1>
+          Hola, soy Jacobo.<br />Me gusta construir <em>software útil</em>.
+        </h1>
+        <p class="lead">
+          Estudiante de Desarrollo de Software. Acá junto los proyectos en los
+          que trabajo: sistemas web, automatizaciones en Python y experimentos
+          con redes.
+        </p>
+        <div class="btns">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a
+            href="https://github.com/jacobocajall-ux"
+            class="btn btn-ghost"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <section id="sobre-mi">
+      <div class="wrap">
+        <h2>Sobre mí</h2>
+        <p class="sub">Lo que más disfruto hacer.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="icon">🧩</div>
+            <h3>Resolver problemas reales</h3>
+            <p>
+              Me gusta armar herramientas que alguien usa de verdad, como
+              reemplazar planillas sueltas por un sistema simple.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">🌐</div>
+            <h3>Desarrollo web</h3>
+            <p>
+              Páginas rápidas y responsivas con HTML, CSS y JavaScript, y
+              backends con Flask.
+            </p>
+          </div>
+          <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Automatizar y aprender</h3>
+            <p>
+              Scripts en Python para tareas repetitivas, testing y todo lo que
+              tenga que ver con redes y seguridad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="wrap">
+        <h2>Proyectos</h2>
+        <p class="sub">Algunos trabajos recientes.</p>
+        <div class="grid">
+          <div class="card project">
+            <span class="status s-dev">En desarrollo</span>
+            <h3>Gestión de personal para salón de eventos</h3>
+            <p>
+              Sistema web para un salón de fiestas de Yerba Buena: la encargada
+              arma y rota los equipos de mozos, cocina y limpieza de cada
+              evento.
+            </p>
+            <div class="chips">
+              <span class="chip">HTML</span><span class="chip">CSS</span
+              ><span class="chip">JavaScript</span
+              ><span class="chip">Uso real</span>
+            </div>
+          </div>
+          <div class="card project">
+            <span class="status s-done">Terminado</span>
+            <h3>Control remoto de PC con Siri</h3>
+            <p>
+              Encendido y apagado de una computadora desde el celular con
+              comandos de voz, usando Wake-on-LAN y atajos de iOS.
+            </p>
+            <div class="chips">
+              <span class="chip">Wake-on-LAN</span
+              ><span class="chip">Redes</span
+              ><span class="chip">Atajos iOS</span>
+            </div>
+          </div>
+          <div class="card project">
+            <span class="status s-dev">En desarrollo · grupal</span>
+            <h3>Analizador de pendrives</h3>
+            <p>
+              Sistema que revisa memorias USB de forma aislada, detecta archivos
+              sospechosos y avisa antes de que afecten la computadora.
+            </p>
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">Flask</span
+              ><span class="chip">MySQL</span
+              ><span class="chip">Seguridad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <h2>Tecnologías</h2>
+        <p class="sub">Las herramientas con las que trabajo.</p>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">Flask</span
+          ><span class="chip">MySQL</span> <span class="chip">HTML</span
+          ><span class="chip">CSS</span><span class="chip">JavaScript</span>
+          <span class="chip">Git y GitHub</span><span class="chip">Redes</span
+          ><span class="chip">Testing</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact">
+      <div class="wrap">
+        <h2>Contacto</h2>
+        <p class="lead">
+          Si querés charlar sobre algún proyecto o sobre programación,
+          escribime.
+        </p>
+        <div class="btns" style="justify-content: center">
+          <a href="mailto:contacto@benjalima.is-a.dev" class="btn btn-primary"
+            >contacto@benjalima.is-a.dev</a
+          >
+          <a
+            href="https://github.com/jacobocajall-ux"
+            class="btn btn-ghost"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="y"></span> Jacobo Cajal · San Miguel de Tucumán</footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
